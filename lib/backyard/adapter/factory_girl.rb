@@ -1,8 +1,8 @@
 class Backyard::Adapter::FactoryGirl < Backyard::Adapter
 
   def class_for_type(model_type)
-    factory = self.class.factory_girl_class.factories[model_type.to_sym]
-    raise ArgumentError, "no factory for: #{model_type}\ngot: #{::Factory.factories.keys}" unless factory
+    factory = factories[model_type.to_sym]
+    raise ArgumentError, "no factory for: #{model_type}\ngot: #{factories.keys}" unless factory
     factory.build_class
   end
 
@@ -10,8 +10,12 @@ class Backyard::Adapter::FactoryGirl < Backyard::Adapter
     self.class.factory_girl_class.create(model_type, attributes)
   end
 
+  def factories
+    self.class.factory_girl_class.factories
+  end
+
   def self.factory_girl_class
-    defined?(::FactoryGirl) ? ::FactoryGirl : Factory
+    ::FactoryGirl
   end
 
 end

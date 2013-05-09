@@ -1,15 +1,19 @@
-Factory.define :string do |f| end
-Factory.define :array do |f| end
-Factory.define :hash do |f| end
-Factory.define :my_string_factory, :class => 'String' do |f| end
-Factory.define :my_hash_factory, :class => Hash do |f| end
+FactoryGirl.define do
 
-require File.join(File.dirname(__FILE__), 'models')
+  factory :string do |f| end
+  factory :array do |f| end
+  factory :hash do |f| end
+  factory :my_string_factory, :class => 'String' do |f| end
+  factory :my_hash_factory, :class => Hash do |f| end
 
-Factory.define :user do |f|
-  f.username 'John Doe'
-end
+  require File.join(File.dirname(__FILE__), 'models')
 
-Factory.define :account do |f|
-  f.description '<missing>'
+  factory :user do |f|
+    f.username 'John Doe'
+  end
+
+  factory :account do |f|
+    f.description '<missing>'
+  end
+
 end

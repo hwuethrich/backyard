@@ -4,7 +4,7 @@ describe Backyard::Adapter::FactoryGirl do
 
   describe "#create" do
     it "should delegate to factory_girl" do
-      Factory.should_receive(:create).with(:entry, {:name => '123 Entry'})
+      described_class.factory_girl_class.should_receive(:create).with(:entry, {:name => '123 Entry'})
       subject.create :entry, {:name => '123 Entry'}
     end
   end
@@ -52,17 +52,12 @@ describe Backyard::Adapter::FactoryGirl do
   end
 
   describe "#factory_girl_class" do
-    let(:factory_class) { Class.new }
+    let(:factory_class) { FactoryGirl }
 
     it "returns ::FactoryGirl for factory_girl 2.x and higher" do
-      Object.const_set("FactoryGirl", factory_class)
       described_class.send(:factory_girl_class).should == factory_class
-      Object.send(:remove_const, "FactoryGirl")
     end
 
-    it "returns Factory for factory_girl 1.x and lower" do
-      described_class.send(:factory_girl_class).should == Factory
-    end
   end
 
 end

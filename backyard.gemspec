@@ -19,8 +19,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "cucumber"
   s.add_development_dependency "guard"
   s.add_development_dependency "guard-rspec"
-  s.add_development_dependency "factory_girl", "1.3.2"
-  s.add_development_dependency "activerecord"
+  s.add_development_dependency "factory_girl", "4.2.0"
+  s.add_development_dependency "activerecord", "3.2.13"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "yard"
 
